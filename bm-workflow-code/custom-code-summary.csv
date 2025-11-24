@@ -1,0 +1,2 @@
+workflow_name,workflow_id,workflow_file,action_name,action_id,action_type,language,runtime,code_path,code_hash,secrets,inputs
+Sample Lifecycle Nurture,987654,bm-workflow-code/workflows/sample_workflow.json,Enrich company via API,2,CUSTOM_CODE_ACTION,nodejs18.x,v1,bm-workflow-code/workflow_code/sample-lifecycle-nurture/enrich-company-via-api.js,d75b30b367a4eb00ee174095e72739dbe992344435c6283182a97238c9e594a6,ENRICHMENT_API_KEY,"{'name': 'company_domain', 'type': 'STRING'}"

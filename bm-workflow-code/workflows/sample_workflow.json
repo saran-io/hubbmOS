@@ -1,0 +1,35 @@
+{
+  "id": 987654,
+  "name": "Sample Lifecycle Nurture",
+  "description": "Demo workflow with a custom code action",
+  "actions": [
+    {
+      "actionId": "1",
+      "name": "Set lifecycle stage",
+      "type": "SET_PROPERTY",
+      "parameters": {
+        "propertyName": "lifecyclestage",
+        "propertyValue": "marketingqualifiedlead"
+      }
+    },
+    {
+      "actionId": "2",
+      "name": "Enrich company via API",
+      "type": "CUSTOM_CODE_ACTION",
+      "customCodeAction": {
+        "language": "nodejs18.x",
+        "runtime": "v1",
+        "sourceCode": "exports.main = async (event, callback) => {\n  const companyDomain = event.inputFields['company_domain'];\n  if (!companyDomain) {\n    throw new Error('Missing company domain');\n  }\n  // Fake enrichment\n  const revenue = Math.floor(Math.random() * 1000000);\n  callback({ outputFields: { enriched_revenue: revenue } });\n};",
+        "secrets": [
+          "ENRICHMENT_API_KEY"
+        ],
+        "inputFields": [
+          {
+            "name": "company_domain",
+            "type": "STRING"
+          }
+        ]
+      }
+    }
+  ]
+}

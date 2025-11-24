@@ -1,0 +1,21 @@
+[
+  {
+    "workflow_name": "Sample Lifecycle Nurture",
+    "workflow_id": 987654,
+    "workflow_file": "bm-workflow-code/workflows/sample_workflow.json",
+    "action_name": "Enrich company via API",
+    "action_id": "2",
+    "action_type": "CUSTOM_CODE_ACTION",
+    "language": "nodejs18.x",
+    "runtime": "v1",
+    "code": "exports.main = async (event, callback) => {\n  const companyDomain = event.inputFields['company_domain'];\n  if (!companyDomain) {\n    throw new Error('Missing company domain');\n  }\n  // Fake enrichment\n  const revenue = Math.floor(Math.random() * 1000000);\n  callback({ outputFields: { enriched_revenue: revenue } });\n};",
+    "code_hash": "d75b30b367a4eb00ee174095e72739dbe992344435c6283182a97238c9e594a6",
+    "code_path": "bm-workflow-code/workflow_code/sample-lifecycle-nurture/enrich-company-via-api.js",
+    "secrets": [
+      "ENRICHMENT_API_KEY"
+    ],
+    "inputs": [
+      "{'name': 'company_domain', 'type': 'STRING'}"
+    ]
+  }
+]
